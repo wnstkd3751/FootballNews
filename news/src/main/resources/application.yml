@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: news
+
+  data:
+    mongodb:
+      uri: mongodb+srv://jun1234755_db_user:5rpqJ8AG9zK4UM9P@cluster0.stk2lp3.mongodb.net/?appName=Cluster0
+
+server:
+  port: 8080
