@@ -95,12 +95,12 @@ export default function TierGuide() {
         <div className="
           rounded-2xl
           border
-          border-zinc-700
+          border-zinc-600
           bg-zinc-800/20
           p-6
         ">
           <h3 className="
-            text-zinc-300
+            text-zinc-200
             font-bold
             text-lg
           ">

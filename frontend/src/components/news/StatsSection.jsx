@@ -37,7 +37,6 @@ export default function StatsSection() {
           <div
             key={stat.title}
             className="
-              bg-[#0B0B0C]
               border
               border-zinc-900
               rounded-2xl

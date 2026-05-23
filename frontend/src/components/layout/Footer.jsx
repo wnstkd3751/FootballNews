@@ -63,7 +63,6 @@ export default function Footer() {
                 type="text"
                 placeholder="이메일 주소"
                 className="
-                  bg-black
                   border
                   border-zinc-800
                   rounded-xl

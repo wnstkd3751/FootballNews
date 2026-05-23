@@ -9,7 +9,6 @@ export default function HeroSection() {
     ">
 
       <div className="
-        bg-gradient-to-b
         from-[#07111F]
         to-transparent
         rounded-3xl
@@ -34,7 +33,6 @@ export default function HeroSection() {
                 text-5xl
                 font-bold
                 tracking-tight
-                text-white
               ">
                 Napoli Feed
               </h1>
@@ -50,18 +48,7 @@ export default function HeroSection() {
             </div>
           </div>
 
-          <div className="
-            px-4
-            py-2
-            rounded-xl
-            border
-            border-zinc-800
-            bg-black/40
-            text-sm
-            text-zinc-400
-          ">
-            🟢 실시간
-          </div>
+          
 
         </div>
 

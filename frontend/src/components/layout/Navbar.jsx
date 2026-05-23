@@ -1,9 +1,23 @@
-import { Search } from "lucide-react";
+import {
+  Search,
+  Moon,
+  Sun
+} from "lucide-react";
+import { useEffect, useState } from "react";
 import icon from "../../img/icon.png";
 
 export default function Navbar() {
+  const [darkMode, setDarkMode] = useState(true);
+
+  const toggleDarkMode = () => {
+
+  document.documentElement.classList.toggle("dark");
+
+  setDarkMode(!darkMode);
+};
+
   return (
-    <header className="border-b border-zinc-800 sticky top-0 bg-black/80 backdrop-blur z-50">
+    <header className="border-b border-zinc-800 sticky top-0 backdrop-blur z-50">
       <div className="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between">
 
         <div className="flex items-center gap-3">
@@ -19,8 +33,12 @@ export default function Navbar() {
         </div>
 
         <nav className="hidden md:flex items-center gap-8 text-zinc-400">
-          <button className="text-white">
+          <button >
             실시간 피드
+          </button>
+          
+          <button >
+            전체 소식
           </button>
 
           <button>
@@ -32,9 +50,49 @@ export default function Navbar() {
           </button>
         </nav>
 
-        <button className="w-10 h-10 rounded-full bg-zinc-900 flex items-center justify-center">
-          <Search size={18} />
-        </button>
+        <div className="flex items-center gap-3">
+
+  <button
+    onClick={toggleDarkMode}
+    className="
+      w-10
+      h-10
+      rounded-full
+      bg-zinc-400
+      border
+      border-zinc-800
+      flex
+      items-center
+      justify-center
+      hover:bg-zinc-800
+      transition
+    "
+  >
+
+    {darkMode ? (
+      <Sun size={18} />
+    ) : (
+      <Moon size={18} />
+    )}
+
+  </button>
+
+  <button className="
+    w-10
+    h-10
+    rounded-full
+    bg-zinc-400
+    border
+    border-zinc-800
+    flex
+    items-center
+    justify-center
+    hover:bg-zinc-800
+  ">
+    <Search size={18} />
+  </button>
+
+</div>
       </div>
     </header>
   );

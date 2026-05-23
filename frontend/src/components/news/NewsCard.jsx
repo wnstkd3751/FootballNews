@@ -14,7 +14,6 @@ export default function NewsCard({ news }) {
   return (
     <div
       className="
-        bg-[#0B0B0C]
         border
         border-zinc-900
         rounded-2xl
@@ -89,7 +88,6 @@ export default function NewsCard({ news }) {
 
         <p className="
           mt-6
-          text-zinc-200
           leading-7
           flex-1
         ">
@@ -138,10 +136,10 @@ export default function NewsCard({ news }) {
               px-4
               py-2
               rounded-lg
-              bg-zinc-900
-              hover:bg-zinc-800
               transition
               text-sm
+              bg-cyan-900/20
+              hover:bg-cyan-900/50
             "
           >
             번역 보기
@@ -152,10 +150,10 @@ export default function NewsCard({ news }) {
               px-4
               py-2
               rounded-lg
-              bg-zinc-900
-              hover:bg-zinc-800
               transition
               text-sm
+              bg-cyan-900/20
+              hover:bg-cyan-900/50
             "
           >
             원문 보기

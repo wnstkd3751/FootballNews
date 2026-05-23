@@ -26,7 +26,7 @@ export default function FeedSection() {
             text-zinc-500
             mt-3
           ">
-            AI 필터링된 최신 나폴리 소식
+            최신 나폴리 소식
           </p>
 
         </div>
@@ -35,7 +35,6 @@ export default function FeedSection() {
           flex
           items-center
           gap-2
-          bg-zinc-900
           border
           border-zinc-800
           rounded-xl

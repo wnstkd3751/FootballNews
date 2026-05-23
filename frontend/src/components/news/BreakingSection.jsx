@@ -8,7 +8,6 @@ export default function BreakingSection() {
         overflow-hidden
         border
         border-red-900/60
-        bg-[#1A0B0B]
       ">
 
         <div className="
@@ -76,7 +75,6 @@ export default function BreakingSection() {
           <p className="
             mt-6
             text-lg
-            text-zinc-200
             leading-8
           ">
             Napoli are closing in on signing Romelu Lukaku from Chelsea.
