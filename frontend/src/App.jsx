@@ -1,10 +1,42 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+} from 'react';
+
 import HomePage from "./pages/HomePage";
+import FeedPage from "./pages/FeedPage";
+import NewsDetailPage from "./pages/NewsDetailPage";
+import SearchPage from "./pages/SearchPage";
 
 export default function App() {
-  return <HomePage />;
+  return (
+    <BrowserRouter>
+
+      <Routes>
+
+        <Route
+          path="/"
+          element={<HomePage />}
+        />
+
+        <Route
+          path="/feed"
+          element={<FeedPage />}
+        />
+
+        <Route
+          path="/news/:id"
+          element={<NewsDetailPage />}
+        />
+
+        <Route
+          path="/search"
+          element={<SearchPage />}
+        />
+
+      </Routes>
+
+    </BrowserRouter>
+  );
 }

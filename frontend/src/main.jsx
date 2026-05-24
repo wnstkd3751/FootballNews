@@ -5,8 +5,10 @@ import App from './App.jsx'
 
 document.documentElement.classList.add("dark");
 
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
+ReactDOM.createRoot(
+  document.getElementById("root")
+).render(
+  <React.StrictMode>
     <App />
-  </StrictMode>,
-)
+  </React.StrictMode>
+);

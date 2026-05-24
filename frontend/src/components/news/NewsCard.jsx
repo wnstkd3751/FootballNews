@@ -8,6 +8,9 @@ const tierStyles = {
   TIER15:
     "bg-zinc-500/10 text-zinc-300 border border-zinc-500/20",
 };
+import {
+  Link
+} from "react-router-dom";
 
 export default function NewsCard({ news }) {
 
@@ -145,7 +148,8 @@ export default function NewsCard({ news }) {
             번역 보기
           </button>
 
-          <button
+          <Link
+            to={`/news/${news.id}`}
             className="
               px-4
               py-2
@@ -157,7 +161,7 @@ export default function NewsCard({ news }) {
             "
           >
             원문 보기
-          </button>
+          </Link>
 
         </div>
 

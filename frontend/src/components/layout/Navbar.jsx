@@ -3,6 +3,9 @@ import {
   Moon,
   Sun
 } from "lucide-react";
+import {
+  Link
+} from "react-router-dom";
 import { useEffect, useState } from "react";
 import icon from "../../img/icon.png";
 
@@ -19,35 +22,43 @@ export default function Navbar() {
   return (
     <header className="border-b border-zinc-800 sticky top-0 backdrop-blur z-50">
       <div className="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between">
-
+<Link
+          to="/"
+          className="
+            flex
+            items-center
+            gap-3
+          "
+        >
         <div className="flex items-center gap-3">
             <img
-  src={icon}
-  alt="logo"
-  className="w-10 h-10 object-contain"
-/>
+            src={icon}
+            alt="logo"
+            className="w-10 h-10 object-contain"
+            />
 
           <h1 className="font-bold text-xl">
             FootNews
           </h1>
-        </div>
-
-        <nav className="hidden md:flex items-center gap-8 text-zinc-400">
-          <button >
-            실시간 피드
-          </button>
           
-          <button >
+        </div>
+</Link>
+        <nav className="hidden md:flex items-center gap-8 text-zinc-400">
+          <Link to="/">
+            실시간 피드
+          </Link>
+          
+          <Link to="/feed">
             전체 소식
-          </button>
+          </Link>
 
-          <button>
+          <Link to="/feed">
             티어 가이드
-          </button>
+          </Link>
 
-          <button>
+          <Link to="/search">
             검색
-          </button>
+          </Link>
         </nav>
 
         <div className="flex items-center gap-3">
@@ -89,10 +100,10 @@ export default function Navbar() {
     justify-center
     hover:bg-zinc-800
   ">
-    <Search size={18} />
-  </button>
+            <Search size={18} />
+          </button>
 
-</div>
+        </div>
       </div>
     </header>
   );
