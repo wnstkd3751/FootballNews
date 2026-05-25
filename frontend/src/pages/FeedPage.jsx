@@ -1,6 +1,7 @@
 import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
 import NewsCard from "../components/news/NewsCard";
+import BreakingSection from "../components/news/BreakingSection";
 
 import {
   Flame,
@@ -11,14 +12,11 @@ import { newsList } from "../mock/newsMock";
 
 export default function FeedPage() {
 
-  const breakingNews =
-    newsList.filter((news) => news.breaking);
 
   return (
 
     <div className="
       min-h-screen
-      bg-black
       text-white
     ">
 
@@ -99,101 +97,17 @@ export default function FeedPage() {
 
         {/* 브레이킹 뉴스 */}
 
-        <section className="
-          mt-16
-          rounded-3xl
-          border
-          border-red-900/40
-          bg-gradient-to-b
-          from-red-950/40
-          to-transparent
-          p-8
-        ">
 
-          <div className="
-            flex
-            items-center
-            justify-between
-          ">
+         
 
-            <div className="
-              flex
-              items-center
-              gap-3
-              text-red-400
-              font-semibold
-            ">
 
-              <Flame size={18} />
+            <BreakingSection
+  breakingNews={
+    newsList.filter((news) => news.breaking)
+  }
+/>
 
-              Breaking News
 
-            </div>
-
-            <span className="text-sm text-zinc-500">
-              2개의 긴급 소식
-            </span>
-
-          </div>
-
-          <div className="
-            mt-6
-            grid
-            md:grid-cols-2
-            gap-4
-          ">
-
-            {breakingNews.map((news) => (
-
-              <div
-                key={news.id}
-                className="
-                  rounded-2xl
-                  border
-                  border-zinc-800
-                  bg-black/40
-                  p-5
-                "
-              >
-
-                <div className="
-                  flex
-                  items-center
-                  justify-between
-                ">
-
-                  <div>
-
-                    <p className="font-semibold">
-                      {news.source}
-                    </p>
-
-                    <p className="
-                      text-sm
-                      text-zinc-500
-                    ">
-                      {news.time}
-                    </p>
-
-                  </div>
-
-                </div>
-
-                <p className="
-                  mt-4
-                  text-zinc-200
-                  leading-relaxed
-                ">
-                  {news.content}
-                </p>
-
-              </div>
-
-            ))}
-
-          </div>
-
-        </section>
 
         {/* 필터 */}
 
@@ -204,12 +118,16 @@ export default function FeedPage() {
           justify-between
           flex-wrap
           gap-5
+          
         ">
 
           <div className="
             flex
             gap-3
             flex-wrap
+            rounded-2xl
+            border
+            border-zinc-800
           ">
 
             {[
@@ -226,10 +144,9 @@ export default function FeedPage() {
                   px-5
                   py-2
                   rounded-xl
-                  bg-zinc-900
                   border
                   border-zinc-800
-                  text-zinc-300
+                  text-zinc-500
                   hover:border-cyan-500/40
                   transition
                 "
@@ -248,11 +165,11 @@ export default function FeedPage() {
             px-4
             py-2
             rounded-xl
-            bg-zinc-900
+            bg-zinc-400
             border
             border-zinc-800
             text-sm
-            text-zinc-300
+            text-zinc-800
           ">
 
             <ArrowDown size={16} />
@@ -278,15 +195,9 @@ export default function FeedPage() {
               text-3xl
               font-bold
             ">
-              최근 소식
+              12개의 소식
             </h2>
 
-            <button className="
-              text-cyan-400
-              hover:text-cyan-300
-            ">
-              전체 보기
-            </button>
 
           </div>
 

@@ -3,10 +3,10 @@ const tierStyles = {
     "bg-blue-500/10 text-blue-400 border border-blue-500/20",
 
   TIER1:
-    "bg-yellow-500/10 text-yellow-400 border border-yellow-500/20",
+    "bg-yellow-500/10 text-yellow-500 border border-yellow-500/20",
 
-  TIER15:
-    "bg-zinc-500/10 text-zinc-300 border border-zinc-500/20",
+  "TIER1.5":
+    "bg-zinc-500/10 text-zinc-700 border border-zinc-500/20",
 };
 import {
   Link
@@ -160,7 +160,7 @@ export default function NewsCard({ news }) {
               hover:bg-cyan-900/50
             "
           >
-            원문 보기
+            전체 보기
           </Link>
 
         </div>

@@ -1,109 +1,211 @@
-export default function BreakingSection() {
+import { useEffect, useState } from "react";
+
+export default function BreakingSection({ breakingNews }) {
+
+  const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+
+    if (!breakingNews?.length) return;
+
+    const interval = setInterval(() => {
+
+      setCurrent((prev) =>
+        (prev + 1) % breakingNews.length
+      );
+
+    }, 4000);
+
+    return () => clearInterval(interval);
+
+  }, [breakingNews]);
+
+  if (!breakingNews?.length) return null;
+
+  const news = breakingNews[current];
 
   return (
-    <section className="py-10">
+
+    <section className="
+      mt-10
+      rounded-3xl
+      border
+      border-red-500/20
+      overflow-hidden
+      from-red-950/40
+      to-zinc-950
+    ">
+
+      {/* TOP */}
 
       <div className="
-        rounded-2xl
-        overflow-hidden
-        border
-        border-red-900/60
+        flex
+        items-center
+        justify-between
+        px-6
+        py-4
+        border-b
+        border-red-500/10
       ">
 
         <div className="
-          bg-red-950/70
-          border-b
-          border-red-900
-          px-5
-          py-3
+          flex
+          items-center
+          gap-3
           text-red-400
-          text-sm
           font-semibold
         ">
-          🚨 BREAKING NEWS
+
+          <span>🚨</span>
+
+          <span>
+            BREAKING NEWS
+          </span>
+
         </div>
 
-        <div className="p-6">
+        <div className="
+          text-sm
+          text-zinc-500
+        ">
+          {current + 1} / {breakingNews.length}
+        </div>
 
-          <div className="
-            flex
-            items-center
-            justify-between
-          ">
+      </div>
+
+      {/* CONTENT */}
+
+      <div className="
+        p-8
+        transition-all
+        duration-500
+      ">
+
+        <div className="
+          flex
+          items-start
+          justify-between
+          gap-6
+        ">
+
+          <div className="flex gap-4">
+
+            <img
+              src={news.image}
+              alt=""
+              className="
+                w-14
+                h-14
+                rounded-full
+                object-cover
+                border
+                border-zinc-700
+              "
+            />
 
             <div>
 
-              <div className="flex items-center gap-3">
+              <h2 className="
+                text-2xl
+                font-bold
+              ">
+                {news.author}
+              </h2>
 
-                <div className="
-                  w-10
-                  h-10
-                  rounded-full
-                  bg-zinc-800
-                " />
-
-                <div>
-
-                  <h3 className="font-semibold">
-                    Fabrizio Romano
-                  </h3>
-
-                  <p className="text-zinc-500 text-sm">
-                    @FabrizioRomano
-                  </p>
-
-                </div>
-              </div>
+              <p className="text-zinc-500">
+                {news.handle}
+              </p>
 
             </div>
 
-            <span className="
-              px-3
-              py-1
-              rounded-full
-              bg-blue-500/10
-              border
-              border-blue-500/20
-              text-blue-400
-              text-sm
-            ">
-              Tier 1
+          </div>
+<span className="
+            px-4
+            py-2
+            rounded-full
+            text-sm
+            border
+            border-yellow-500/20
+            bg-yellow-500/10
+            text-yellow-700
+          ">
+            {news.tier}
+          </span>
+        
+        </div>
+
+
+        
+        <p className="
+          mt-8
+          text-2xl
+          leading-10
+          max-w-5xl
+        ">
+          {news.content}
+        </p>
+
+        <div className="
+          mt-8
+          flex
+          flex-wrap
+          gap-3
+        ">
+
+          {news.tags.map((tag) => (
+
+            <span
+              key={tag}
+              className="
+                px-3
+                py-1
+                rounded-lg
+                bg-cyan-500/10
+                text-cyan-400
+                text-sm
+              "
+            >
+              #{tag}
             </span>
 
-          </div>
-
-          <p className="
-            mt-6
-            text-lg
-            leading-8
-          ">
-            Napoli are closing in on signing Romelu Lukaku from Chelsea.
-            Agreement reached on loan with option to buy.
-          </p>
-
-          <div className="
-            mt-5
-            flex
-            items-center
-            gap-3
-          ">
-
-            <span className="
-              bg-cyan-500/10
-              text-cyan-400
-              px-3
-              py-1
-              rounded-lg
-              text-sm
-            ">
-              #Lukaku
-            </span>
-
-          </div>
+          ))}
 
         </div>
 
       </div>
+
+      {/* INDICATOR */}
+
+      <div className="
+        flex
+        gap-2
+        px-6
+        pb-5
+      ">
+
+        {breakingNews.map((_, index) => (
+
+          <button
+            key={index}
+            onClick={() => setCurrent(index)}
+            className={`
+              h-2
+              rounded-full
+              transition-all
+              duration-300
+              ${
+                current === index
+                  ? "w-10 bg-red-400"
+                  : "w-2 bg-zinc-700"
+              }
+            `}
+          />
+
+        ))}
+
+      </div>
+
     </section>
+
   );
 }

@@ -11,6 +11,8 @@ export const newsList = [
 
     breaking: true,
 
+    title: "Osimhen transfer",
+
     content:
       "Victor Osimhen has completed his permanent transfer to Galatasaray. We wish him all the best in his new chapter.",
 

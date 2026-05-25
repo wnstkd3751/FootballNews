@@ -6,6 +6,8 @@ import FeedSection from "../components/news/FeedSection";
 import TierGuide from "../components/tier/TierGuide";
 import Footer from "../components/layout/Footer";
 
+import { newsList } from "../mock/newsMock";
+
 export default function HomePage() {
   return (
     <div className="min-h-screen text-white">
@@ -13,7 +15,11 @@ export default function HomePage() {
 
       <main className="max-w-7xl mx-auto px-6">
         <HeroSection />
-        <BreakingSection />
+        <BreakingSection
+  breakingNews={
+    newsList.filter((news) => news.breaking)
+  }
+/>
         <StatsSection />
         <FeedSection />
         <TierGuide />
