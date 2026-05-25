@@ -2,7 +2,7 @@ import {
   BrowserRouter,
   Routes,
   Route,
-} from 'react';
+} from "react-router-dom";
 
 import HomePage from "./pages/HomePage";
 import FeedPage from "./pages/FeedPage";
