@@ -52,7 +52,7 @@ export default function Navbar() {
             전체 소식
           </Link>
 
-          <Link to="/feed">
+          <Link to="/tier">
             티어 가이드
           </Link>
 
@@ -87,21 +87,6 @@ export default function Navbar() {
     )}
 
   </button>
-
-  <button className="
-    w-10
-    h-10
-    rounded-full
-    bg-zinc-400
-    border
-    border-zinc-800
-    flex
-    items-center
-    justify-center
-    hover:bg-zinc-800
-  ">
-            <Search size={18} />
-          </button>
 
         </div>
       </div>

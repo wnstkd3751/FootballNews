@@ -8,6 +8,7 @@ import HomePage from "./pages/HomePage";
 import FeedPage from "./pages/FeedPage";
 import NewsDetailPage from "./pages/NewsDetailPage";
 import SearchPage from "./pages/SearchPage";
+import TierPage from "./pages/TierPages"
 
 export default function App() {
   return (
@@ -28,6 +29,11 @@ export default function App() {
         <Route
           path="/news/:id"
           element={<NewsDetailPage />}
+        />
+
+        <Route
+          path="/tier"
+          element={<TierPage />}
         />
 
         <Route
