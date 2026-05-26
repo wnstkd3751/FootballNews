@@ -2,6 +2,7 @@ import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
 import NewsCard from "../components/news/NewsCard";
 import BreakingSection from "../components/news/BreakingSection";
+import Footer from "../components/layout/Footer";
 
 import {
   Flame,

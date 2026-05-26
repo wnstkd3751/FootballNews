@@ -8,6 +8,7 @@ import Footer from "../components/layout/Footer";
 import NewsCard from "../components/news/NewsCard";
 
 import { newsList } from "../mock/newsMock";
+import Footer from "../components/layout/Footer";
 
 export default function SearchPage() {
 
