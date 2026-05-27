@@ -4,7 +4,12 @@ spring:
 
   data:
     mongodb:
-      uri: mongodb+srv://jun1234755_db_user:5rpqJ8AG9zK4UM9P@cluster0.stk2lp3.mongodb.net/?appName=Cluster0
+      uri: ${MONGO_URI}
 
 server:
   port: 8080
+
+x:
+  bearer-token: ${X_BEARER_TOKEN}
+  client-id: ${X_CLIENT_ID}
+  client-secret: ${X_CLIENT_SECRET}

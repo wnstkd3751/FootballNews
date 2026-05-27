@@ -3,6 +3,7 @@ package football.news
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
+@EnableScheduling
 @SpringBootApplication
 class NewsApplication
 
