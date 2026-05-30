@@ -36,15 +36,8 @@ GET /news
 ]
 
 🔄 데이터 수집 프로세스
-Scheduler
-     ↓
-X API 호출
-     ↓
-게시물 수집
-     ↓
-MongoDB 저장
-     ↓
-REST API 제공
+Scheduler -> X API 호출 -> 게시물 수집 -> MongoDB 저장 -> REST API 제공
+
 🎯 향후 계획
 AI 기반 뉴스 요약
 뉴스 중요도 분석
