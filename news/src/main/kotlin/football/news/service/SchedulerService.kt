@@ -8,6 +8,8 @@ import org.springframework.scheduling.annotation.Scheduled
 
 import org.springframework.stereotype.Service
 
+import jakarta.annotation.PostConstruct
+
 @Service
 class SchedulerService(
 
@@ -17,6 +19,12 @@ class SchedulerService(
 
     private val newsService: NewsService
 ) {
+
+    @PostConstruct
+fun init() {
+
+    collectNews()
+}
 
     private val log =
         LoggerFactory.getLogger(this::class.java)
@@ -30,7 +38,7 @@ class SchedulerService(
             accountRepository.findByEnabled(true)
 
         accounts.forEach { account ->
-
+            Thread.sleep(1500)
             try {
 
                 val response =
@@ -50,17 +58,9 @@ class SchedulerService(
                 }
 
             } catch (e: Exception) {
-
-                log.error(
-                    "Collect Error -> ${account.account}"
-                )
-            }
+    log.error("Collect Error -> {}", account, e)
+}
         }
     }
 }
 
-@PostConstruct
-fun init() {
-
-    collectNews()
-}

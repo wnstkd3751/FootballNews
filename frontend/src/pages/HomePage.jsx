@@ -6,23 +6,62 @@ import FeedSection from "../components/news/FeedSection";
 import TierGuide from "../components/tier/TierGuide";
 import Footer from "../components/layout/Footer";
 
-import { newsList } from "../mock/newsMock";
+import { useEffect, useState } from "react";
+import {
+  getNews,
+  getBreakingNews,
+} from "../api/newsApi";
 
 export default function HomePage() {
+
+  const [newsList, setNewsList] =
+    useState([]);
+
+  const [breakingNews,
+    setBreakingNews] =
+    useState([]);
+
+  useEffect(() => {
+    loadNews();
+  }, []);
+
+  const loadNews = async () => {
+    try {
+
+      const news =
+        await getNews();
+
+      const breaking =
+        await getBreakingNews();
+
+      setNewsList(news);
+      setBreakingNews(breaking);
+
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
     <div className="min-h-screen text-white">
       <Navbar />
 
       <main className="max-w-7xl mx-auto px-6">
+
         <HeroSection />
+
         <BreakingSection
-  breakingNews={
-    newsList.filter((news) => news.breaking)
-  }
-/>
+          breakingNews={breakingNews}
+        />
+
         <StatsSection />
-        <FeedSection />
+
+        <FeedSection
+          newsList={newsList}
+        />
+
         <TierGuide />
+
       </main>
 
       <Footer />

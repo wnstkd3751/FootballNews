@@ -21,5 +21,7 @@ data class News(
 
     val createdAt: String,
 
-    val breaking: Boolean
+    val breaking: Boolean,
+
+    val breakingType: BreakingType
 )

@@ -4,10 +4,10 @@ spring:
 
   data:
     mongodb:
-      uri: ${MONGO_URI}
+      uri: ${MONGO_URL}
 
 server:
-  port: 8080
+  port: ${PORT:8080}
 
 x:
   bearer-token: ${X_BEARER_TOKEN}

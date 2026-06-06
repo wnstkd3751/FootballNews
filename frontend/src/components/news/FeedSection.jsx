@@ -1,7 +1,9 @@
-import { newsList } from "../../mock/newsMock";
+
 import NewsCard from "./NewsCard";
 
-export default function FeedSection() {
+export default function FeedSection({
+  newsList,
+}) {
 
   return (
     <section className="py-16">

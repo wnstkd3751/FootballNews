@@ -10,10 +10,14 @@ import org.slf4j.LoggerFactory
 
 import org.springframework.stereotype.Service
 
+import football.news.domain.BreakingType
+
 @Service
 class NewsService(
 
-    private val newsRepository: NewsRepository
+    private val newsRepository: NewsRepository,
+
+    private val breakingService: BreakingService
 ) {
 
     private val log =
@@ -36,26 +40,31 @@ class NewsService(
                 return@forEach
             }
 
-            val breaking =
-                isBreaking(it.text)
+            val type =
+                breakingService.classify(
+                    it.text
+                )
 
             val news = News(
 
-                tweetId = it.id,
+    tweetId = it.id,
 
-                author = account,
+    author = account,
 
-                content = it.text,
+    content = it.text,
 
-                reliability = reliability,
+    reliability = reliability,
 
-                url =
-                    "https://x.com/$account/status/${it.id}",
+    url =
+        "https://x.com/$account/status/${it.id}",
 
-                createdAt = it.createdAt,
+    createdAt = it.createdAt,
 
-                breaking = breaking
-            )
+    breaking =
+        type == BreakingType.BREAKING,
+
+    breakingType = type
+)
 
             newsRepository.save(news)
 
