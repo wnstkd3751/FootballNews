@@ -8,9 +8,40 @@ import {
   ArrowDown
 } from "lucide-react";
 
-import { newsList } from "../mock/newsMock";
+import { useEffect, useState } from "react";
+import {
+  getNews,
+  getBreakingNews,
+} from "../api/newsApi";
 
 export default function FeedPage() {
+  const [newsList, setNewsList] =
+    useState([]);
+
+  const [breakingNews,
+    setBreakingNews] =
+    useState([]);
+
+  useEffect(() => {
+    loadNews();
+  }, []);
+
+  const loadNews = async () => {
+    try {
+
+      const news =
+        await getNews();
+
+      const breaking =
+        await getBreakingNews();
+
+      setNewsList(news);
+      setBreakingNews(breaking);
+
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
 
   return (
@@ -102,10 +133,8 @@ export default function FeedPage() {
 
 
             <BreakingSection
-  breakingNews={
-    newsList.filter((news) => news.breaking)
-  }
-/>
+                      breakingNews={breakingNews}
+                    />
 
 
 

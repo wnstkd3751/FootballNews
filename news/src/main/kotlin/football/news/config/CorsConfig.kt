@@ -2,6 +2,9 @@ package football.news.config
 
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import org.springframework.web.cors.CorsConfiguration
+import org.springframework.web.cors.reactive.CorsWebFilter
+import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource
 
 @Configuration
 class CorsConfig {
@@ -9,19 +12,18 @@ class CorsConfig {
     @Bean
     fun corsWebFilter(): CorsWebFilter {
 
-        val config =
-            CorsConfiguration()
+        val config = CorsConfiguration()
 
-        config.allowedOrigins =
-            listOf(
-                "http://localhost:5173"
-            )
+        config.allowedOriginPatterns =
+            listOf("*")
 
         config.allowedMethods =
             listOf("*")
 
         config.allowedHeaders =
             listOf("*")
+
+        config.allowCredentials = false
 
         val source =
             UrlBasedCorsConfigurationSource()

@@ -31,11 +31,24 @@ export default function HomePage() {
       const news =
         await getNews();
 
-      const breaking =
-        await getBreakingNews();
+     const breaking =
+  await getBreakingNews();
+
+console.log(
+  "breaking",
+  breaking
+);
+
+console.log(
+  "isArray",
+  Array.isArray(breaking)
+);
+
+setBreakingNews(breaking);
 
       setNewsList(news);
       setBreakingNews(breaking);
+
 
     } catch (err) {
       console.error(err);

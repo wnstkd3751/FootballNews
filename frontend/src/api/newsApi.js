@@ -4,6 +4,9 @@ const API_URL =
   import.meta.env.VITE_API_URL;
 
 export const getNews = async () => {
+
+  console.log(API_URL)
+
   const response =
     await axios.get(
       `${API_URL}/api/news`
@@ -14,6 +17,8 @@ export const getNews = async () => {
 
 export const getBreakingNews =
   async () => {
+
+    console.log(API_URL)
 
     const response =
       await axios.get(

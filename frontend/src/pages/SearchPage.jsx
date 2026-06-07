@@ -7,9 +7,41 @@ import Footer from "../components/layout/Footer";
 
 import NewsCard from "../components/news/NewsCard";
 
-import { newsList } from "../mock/newsMock";
+import { useEffect, useState } from "react";
+import {
+  getNews,
+  getBreakingNews,
+} from "../api/newsApi";
 
 export default function SearchPage() {
+
+   const [newsList, setNewsList] =
+    useState([]);
+
+  const [breakingNews,
+    setBreakingNews] =
+    useState([]);
+
+  useEffect(() => {
+    loadNews();
+  }, []);
+
+  const loadNews = async () => {
+    try {
+
+      const news =
+        await getNews();
+
+      const breaking =
+        await getBreakingNews();
+
+      setNewsList(news);
+      setBreakingNews(breaking);
+
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   const keywords = [
     "Osimhen",

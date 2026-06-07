@@ -16,24 +16,54 @@ import {
 import Navbar from "../components/layout/Navbar";
 
 import NewsCard from "../components/news/NewsCard";
-
-import { newsList } from "../mock/newsMock";
+import { useEffect, useState } from "react";
+import {
+  getNews,
+  getBreakingNews,
+} from "../api/newsApi";
 import Footer from "../components/layout/Footer";
 
 export default function NewsDetailPage() {
 
   const { id } = useParams();
 
+  const [newsList, setNewsList] =
+    useState([]);
+
+  const [breakingNews,
+    setBreakingNews] =
+    useState([]);
+
+  useEffect(() => {
+    loadNews();
+  }, []);
+
+  const loadNews = async () => {
+    try {
+
+      const news =
+        await getNews();
+
+      const breaking =
+        await getBreakingNews();
+
+      setNewsList(news);
+      setBreakingNews(breaking);
+
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   const news =
-    newsList.find(
-      (item) => item.id === Number(id)
-    );
+  newsList.find(
+    (item) => item.id === id
+  );
 
-  const relatedNews =
-    newsList.filter(
-      (item) => item.id !== Number(id)
-    );
-
+const relatedNews =
+  newsList.filter(
+    (item) => item.id !== id
+  );
   if (!news) {
     return (
       <div className="text-white p-10">
@@ -497,7 +527,7 @@ export default function NewsDetailPage() {
             space-y-5
           ">
 
-            {[1, 2, 3].map((item) => (
+            {/* {[1, 2, 3].map((item) => (
 
               <div
                 key={item}
@@ -568,7 +598,7 @@ export default function NewsDetailPage() {
 
               </div>
 
-            ))}
+            ))} */}
 
           </div>
 

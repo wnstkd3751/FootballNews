@@ -20,6 +20,8 @@ class NewsController(
 
     @GetMapping
     fun getNews(): List<News> {
+        println("GET NEWS CALLED")
+
 
         return newsRepository.findAll()
             .sortedByDescending {

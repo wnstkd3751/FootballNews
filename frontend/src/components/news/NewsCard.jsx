@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const tierStyles = {
   OFFICIAL:
     "bg-blue-500/10 text-blue-400 border border-blue-500/20",
@@ -6,11 +8,8 @@ const tierStyles = {
     "bg-yellow-500/10 text-yellow-500 border border-yellow-500/20",
 
   "TIER1.5":
-    "bg-zinc-500/10 text-zinc-700 border border-zinc-500/20",
+    "bg-zinc-500/10 text-zinc-400 border border-zinc-500/20",
 };
-import {
-  Link
-} from "react-router-dom";
 
 export default function NewsCard({ news }) {
 
@@ -54,12 +53,21 @@ export default function NewsCard({ news }) {
 
           <div className="flex items-center gap-3">
 
-            <div className="
-              w-11
-              h-11
-              rounded-full
-              bg-zinc-800
-            " />
+            <div
+              className="
+                w-11
+                h-11
+                rounded-full
+                bg-zinc-800
+                flex
+                items-center
+                justify-center
+                text-sm
+                font-bold
+              "
+            >
+              {news.author?.charAt(0)}
+            </div>
 
             <div>
 
@@ -68,7 +76,9 @@ export default function NewsCard({ news }) {
               </h3>
 
               <p className="text-zinc-500 text-sm">
-                {news.handle}
+                {new Date(
+                  news.createdAt
+                ).toLocaleDateString()}
               </p>
 
             </div>
@@ -81,60 +91,64 @@ export default function NewsCard({ news }) {
               py-1
               rounded-full
               text-xs
-              ${tierStyles[news.tier]}
+              ${tierStyles[news.reliability] || ""}
             `}
           >
-            {news.tier}
+            {news.reliability}
           </span>
 
         </div>
 
-        <p className="
-          mt-6
-          leading-7
-          flex-1
-        ">
+        <p
+          className="
+            mt-6
+            leading-7
+            flex-1
+          "
+        >
           {news.content}
         </p>
 
-        <div className="
-          mt-6
-          flex
-          flex-wrap
-          gap-2
-        ">
+        <div
+          className="
+            mt-6
+            flex
+            flex-wrap
+            gap-2
+          "
+        >
 
-          {news.tags.map((tag) => (
-
-            <span
-              key={tag}
-              className="
-                bg-cyan-500/10
-                text-cyan-400
-                px-2
-                py-1
-                rounded-md
-                text-xs
-              "
-            >
-              #{tag}
-            </span>
-
-          ))}
+          <span
+            className="
+              bg-cyan-500/10
+              text-cyan-400
+              px-2
+              py-1
+              rounded-md
+              text-xs
+            "
+          >
+            #{news.breakingType}
+          </span>
 
         </div>
 
-        <div className="
-          mt-8
-          pt-5
-          border-t
-          border-zinc-900
-          flex
-          items-center
-          justify-between
-        ">
+        <div
+          className="
+            mt-8
+            pt-5
+            border-t
+            border-zinc-900
+            flex
+            items-center
+            justify-between
+          "
+        >
 
-          <button
+          <a
+            href={news.url}
+            target="_blank"
+            rel="noreferrer"
             className="
               px-4
               py-2
@@ -145,8 +159,8 @@ export default function NewsCard({ news }) {
               hover:bg-cyan-900/50
             "
           >
-            번역 보기
-          </button>
+            원문 보기
+          </a>
 
           <Link
             to={`/news/${news.id}`}
