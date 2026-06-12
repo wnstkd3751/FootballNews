@@ -1,9 +1,4 @@
-package football.news.domain
-
-import org.springframework.data.annotation.Id
-import org.springframework.data.mongodb.core.mapping.Document
-
-@Document(collection = "news")
+@Document("news")
 data class News(
 
     @Id
@@ -23,5 +18,14 @@ data class News(
 
     val breaking: Boolean,
 
-    val breakingType: BreakingType
+    val breakingType: BreakingType,
+
+    // AI 생성
+    val title: String? = null,
+
+    val translatedContent: String? = null,
+
+    val tags: List<String> = emptyList(),
+
+    val player: String? = null
 )

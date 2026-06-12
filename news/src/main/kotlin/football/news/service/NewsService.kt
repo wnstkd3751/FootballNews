@@ -12,6 +12,8 @@ import org.springframework.stereotype.Service
 
 import football.news.domain.BreakingType
 
+import football.news.service.OpenAiService
+
 @Service
 class NewsService(
 
@@ -45,7 +47,13 @@ class NewsService(
                     it.text
                 )
 
-            val news = News(
+            val ai =
+    openAiService.analyze(
+        it.text
+    )
+
+
+val news = News(
 
     tweetId = it.id,
 
@@ -63,7 +71,16 @@ class NewsService(
     breaking =
         type == BreakingType.BREAKING,
 
-    breakingType = type
+    breakingType = type,
+
+    title = ai.title,
+
+    translatedContent =
+        ai.translatedContent,
+
+    tags = ai.tags,
+
+    player = ai.player
 )
 
             newsRepository.save(news)
