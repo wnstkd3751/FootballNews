@@ -1,3 +1,5 @@
+package football.news.dto
+
 data class AiNewsAnalysis(
 
     val title: String,

@@ -13,3 +13,7 @@ x:
   bearer-token: ${X_BEARER_TOKEN}
   client-id: ${X_CLIENT_ID}
   client-secret: ${X_CLIENT_SECRET}
+
+openai:
+  api-key: ${OPENAI_API_KEY}
+  model: gpt-5-mini

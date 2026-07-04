@@ -6,11 +6,14 @@ import football.news.dto.XSearchResponse
 
 import org.springframework.stereotype.Service
 
+import org.springframework.beans.factory.annotation.Qualifier
+
 import org.springframework.web.reactive.function.client.WebClient
 
 @Service
 class XApiService(
 
+    @Qualifier("xWebClient")
     private val webClient: WebClient
 ) {
 

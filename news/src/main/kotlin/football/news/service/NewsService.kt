@@ -19,7 +19,9 @@ class NewsService(
 
     private val newsRepository: NewsRepository,
 
-    private val breakingService: BreakingService
+    private val breakingService: BreakingService,
+
+    private val openAiService: OpenAiService
 ) {
 
     private val log =

@@ -18,5 +18,12 @@ class WebClientConfig {
             )
             .build()
     }
+    @Bean
+    fun openAiWebClient(): WebClient {
+
+        return WebClient.builder()
+            .baseUrl("https://api.openai.com/v1")
+            .build()
+    }
 }
 
